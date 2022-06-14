@@ -1,6 +1,6 @@
 function [theta_ori] = generate_tips_for_python(phi, iter)
 
-phi = imresize(phi,4);
+% phi = imresize(phi,2,'box');
 
 iter_stage2_begin = 500;
 iter_stage3_begin = iter_stage2_begin+10000;
@@ -47,4 +47,5 @@ else
     [theta_ori] = highlightZone(lenu,lenv,max_x,max_y,1);
 end
 
-theta_ori = imresize(theta_ori,0.25);
+% theta_ori = imresize(theta_ori,0.5,'box');
+theta_ori(abs(theta_ori)>0) = 1;
