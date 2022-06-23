@@ -1,6 +1,6 @@
 function [theta_ori] = generate_tips_for_python(phi, iter)
 
-% phi = imresize(phi,2,'box');
+%phi = imresize(phi,4,'bilinear');
 
 iter_stage2_begin = 500;
 iter_stage3_begin = iter_stage2_begin+10000;
@@ -8,12 +8,13 @@ iter_stage45_begin = iter_stage3_begin+18000;
 
 [lenu,lenv] = size(phi);
 
-cue = zeros(lenu,lenv);
-for l = 1:lenu
-    for m = 1:lenv
-        cue(l,m) = sqrt((l-lenu/2)^2+(m-lenv/2)^2);
-    end
-end
+%cue = zeros(lenu,lenv);
+%for l = 1:lenu
+%    for m = 1:lenv
+%        cue(l,m) = sqrt((l-lenu/2)^2+(m-lenv/2)^2);
+%    end
+%end
+cue = rand(lenu,lenv);
 
 if(iter<=iter_stage2_begin)
     theta_ori = ones(lenu,lenv);
@@ -47,5 +48,5 @@ else
     [theta_ori] = highlightZone(lenu,lenv,max_x,max_y,1);
 end
 
-% theta_ori = imresize(theta_ori,0.5,'box');
+%theta_ori = imresize(theta_ori,0.25,'bilinear');
 theta_ori(abs(theta_ori)>0) = 1;
