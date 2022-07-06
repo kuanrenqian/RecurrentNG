@@ -8,13 +8,13 @@ iter_stage45_begin = iter_stage3_begin+18000;
 
 [lenu,lenv] = size(phi);
 
-%cue = zeros(lenu,lenv);
-%for l = 1:lenu
-%    for m = 1:lenv
-%        cue(l,m) = sqrt((l-lenu/2)^2+(m-lenv/2)^2);
-%    end
-%end
-cue = rand(lenu,lenv);
+cue = zeros(lenu,lenv);
+for l = 1:lenu
+    for m = 1:lenv
+        cue(l,m) = sqrt((l-lenu/2)^2+(m-lenv/2)^2);
+    end
+end
+%cue = rand(lenu,lenv);
 
 if(iter<=iter_stage2_begin)
     theta_ori = ones(lenu,lenv);
