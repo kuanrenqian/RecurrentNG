@@ -14,7 +14,6 @@ for l = 1:lenu
         cue(l,m) = sqrt((l-lenu/2)^2+(m-lenv/2)^2);
     end
 end
-%cue = rand(lenu,lenv);
 
 if(iter<=iter_stage2_begin)
     theta_ori = ones(lenu,lenv);
@@ -23,7 +22,7 @@ elseif (iter < iter_stage3_begin) || (iter >=iter_stage45_begin)
     regionalMaxima = imregionalmax(full(tips));
     [Max_y,Max_x] = find(regionalMaxima);
     size_Max = length(Max_x);
-    [theta_ori] = highlightZone(lenu,lenv,Max_x,Max_y,size_Max);
+    [theta_ori] = highlightZone(lenu,lenv,round(Max_x),round(Max_y),size_Max);
 else
     phi_id = round(phi);
     dist = bwdistgeodesic(logical(phi_id),round(lenu/2),round(lenv/2));
