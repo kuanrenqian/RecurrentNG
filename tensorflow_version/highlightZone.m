@@ -13,6 +13,9 @@ for l=1:size_Max
             %ttt(i,j) = 1;
         end
     end
-    theta = theta+ttt;    
+    try
+        theta = theta+ttt; 
+    catch
+    end   
 end
 theta(abs(theta)>0) = 1;
